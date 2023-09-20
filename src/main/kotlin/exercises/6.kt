@@ -1,3 +1,7 @@
+package exercises
+
+//https://projecteuler.net/problem=6
+
 import java.math.BigDecimal
 
 fun main() {

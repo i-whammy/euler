@@ -1,6 +1,9 @@
-import java.math.BigDecimal
+package exercises
 
 // https://projecteuler.net/problem=5
+
+import functions.isPrime
+import java.math.BigDecimal
 
 fun main() {
     println(smallestMultipleUntil(20))
@@ -8,21 +11,8 @@ fun main() {
 
 fun smallestMultipleUntil(number: Int): BigDecimal {
     val primes = mutableListOf<Int>()
-    (1..number).filter { isPrime(it) }.forEach { primes.add(it) }
+    (1..number).filter { isPrime(it.toLong()) }.forEach { primes.add(it) }
     return primes.map { getMaxMultipleUntil(it, number) }.reduce { acc, i -> acc * i }.toBigDecimal()
-}
-
-fun isPrime(number: Int): Boolean {
-    if (number == 2) return true
-    if (number == 1) return false
-    else {
-        var dividend = number - 1
-        while (dividend >= 2) {
-            if (number % dividend == 0) return false
-            dividend -= 1
-        }
-        return true
-    }
 }
 
 fun getMaxMultipleUntil(number: Int, limit: Int): Int {

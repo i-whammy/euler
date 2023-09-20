@@ -1,3 +1,5 @@
+package exercises
+
 // https://projecteuler.net/problem=2
 
 fun main() {

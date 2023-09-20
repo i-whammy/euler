@@ -1,9 +1,9 @@
-import functions.isPrime
+package functions
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class Number5Test {
-
+class IsPrimeTest {
     @Test
     fun isPrimeTest() {
         assertEquals(true, isPrime(7))
@@ -13,9 +13,4 @@ class Number5Test {
         assertEquals(false, isPrime(1))
     }
 
-    @Test
-    fun getMaxMultipleUntil() {
-        assertEquals(16, exercises.getMaxMultipleUntil(2, 20))
-        assertEquals(8, exercises.getMaxMultipleUntil(2, 10))
-    }
 }
