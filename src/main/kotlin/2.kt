@@ -1,4 +1,4 @@
-// https://projecteuler.net/problem=1
+// https://projecteuler.net/problem=2
 
 fun main() {
     println(evenFibonacciNumbers())
