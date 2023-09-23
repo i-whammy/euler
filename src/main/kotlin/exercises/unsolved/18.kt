@@ -1,4 +1,4 @@
-package exercises
+package exercises.unsolved
 
 import java.lang.RuntimeException
 
