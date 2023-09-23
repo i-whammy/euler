@@ -1,4 +1,5 @@
-import exercises.getChainCountOf
+package exercises.to20
+
 import java.math.BigInteger
 import kotlin.test.Test
 import kotlin.test.assertEquals

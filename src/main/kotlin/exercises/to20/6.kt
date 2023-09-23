@@ -1,11 +1,13 @@
-package exercises
+package exercises.to20
 
 //https://projecteuler.net/problem=6
 
 import java.math.BigDecimal
+import kotlin.system.exitProcess
 
 fun main() {
     println(getSumSquareUntil(100) - getSquareSumUntil(100))
+    exitProcess(0)
 }
 
 fun getSquareSumUntil(number: Int): BigDecimal {

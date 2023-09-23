@@ -1,9 +1,12 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=4
 
 fun main() {
     println(largestPalindromeProduct())
+    exitProcess(0)
 }
 
 fun largestPalindromeProduct(): Int {

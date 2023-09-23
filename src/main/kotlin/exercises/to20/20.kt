@@ -1,9 +1,11 @@
-package exercises
+package exercises.to20
 
 import java.math.BigInteger
+import kotlin.system.exitProcess
 
 fun main() {
     println(factory(100).let{ sumOfDigits(it) })
+    exitProcess(0)
 }
 
 fun factory(below: Int): BigInteger {

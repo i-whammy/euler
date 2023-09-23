@@ -1,4 +1,6 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=17
 
@@ -12,6 +14,7 @@ private const val thousand = 8
 
 fun main() {
     println(countNumberLetters(1000))
+    exitProcess(0)
 }
 
 fun countNumberLetters(below: Int): Int {

@@ -1,4 +1,6 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=11
 
@@ -76,4 +78,5 @@ fun main() {
     }
 
     println(products.maxBy { it })
+    exitProcess(0)
 }

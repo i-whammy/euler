@@ -1,8 +1,9 @@
-package exercises
+package exercises.to20
 
 // https://projecteuler.net/problem=8
 
 import java.math.BigDecimal
+import kotlin.system.exitProcess
 
 const val target =
         "73167176531330624919225119674426574742355349194934" +
@@ -28,6 +29,7 @@ const val target =
 
 fun main() {
     println(findNthGreatestProduct(13))
+    exitProcess(0)
 }
 
 fun findNthGreatestProduct(n: Int): BigDecimal {

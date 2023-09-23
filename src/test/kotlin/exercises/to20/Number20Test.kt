@@ -1,4 +1,5 @@
-import exercises.sumOfDigits
+package exercises.to20
+
 import java.math.BigInteger
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -7,9 +8,9 @@ class Number20Test {
 
     @Test
     fun testFactory() {
-        assertEquals(BigInteger.ONE, exercises.factory(1))
-        assertEquals(BigInteger.valueOf(6L), exercises.factory(3))
-        assertEquals(BigInteger.valueOf(3628800L), exercises.factory(10))
+        assertEquals(BigInteger.ONE, factory(1))
+        assertEquals(BigInteger.valueOf(6L), factory(3))
+        assertEquals(BigInteger.valueOf(3628800L), factory(10))
     }
 
     @Test

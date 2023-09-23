@@ -1,6 +1,7 @@
-package exercises
+package exercises.to20
 
 import java.math.BigInteger
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=13
 
@@ -8,6 +9,7 @@ private val chainCountMap = mutableMapOf<Long, BigInteger>()
 
 fun main() {
     println(getLongestChainNumber(1_000_000))
+    exitProcess(0)
 }
 
 fun getLongestChainNumber(until: Int): Int {

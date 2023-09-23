@@ -1,11 +1,13 @@
-package exercises
+package exercises.to20
 
 import java.math.BigInteger
+import kotlin.system.exitProcess
 
 // // https://projecteuler.net/problem=12
 
 fun main() {
     println(firstTriangleNumberHavingDivisorsOver(500))
+    exitProcess(0)
 }
 
 fun firstTriangleNumberHavingDivisorsOver(number: Int): BigInteger {

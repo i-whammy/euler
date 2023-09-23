@@ -1,9 +1,12 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=2
 
 fun main() {
     println(evenFibonacciNumbers())
+    exitProcess(0)
 }
 
 fun evenFibonacciNumbers(): Int {

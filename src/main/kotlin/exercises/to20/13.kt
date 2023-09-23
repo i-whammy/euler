@@ -1,4 +1,6 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=13
 
@@ -106,4 +108,5 @@ private const val oneHundredNumbers =
 
 fun main() {
     println(oneHundredNumbers.split(" ").map { it.toBigInteger() }.reduce { acc, bigInteger -> acc + bigInteger }.let { it.toString().substring(0, 10) })
+    exitProcess(0)
 }

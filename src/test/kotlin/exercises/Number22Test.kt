@@ -1,3 +1,5 @@
+package exercises
+
 import exercises.calculateScore
 import exercises.sumUpNamesScore
 import java.math.BigInteger

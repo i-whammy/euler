@@ -1,12 +1,14 @@
-package exercises
+package exercises.to20
 
 import java.math.BigInteger
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=16
 
 fun main() {
     println(powerDigitSum(15))
     println(powerDigitSum(1000))
+    exitProcess(0)
 }
 
 fun powerDigitSum(exponent: Int): Int {

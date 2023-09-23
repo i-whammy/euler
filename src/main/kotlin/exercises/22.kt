@@ -1,5 +1,7 @@
 package exercises
 
+// https://projecteuler.net/problem=22
+
 import java.io.File
 import java.math.BigInteger
 import kotlin.system.exitProcess

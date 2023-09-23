@@ -1,4 +1,5 @@
-import exercises.isLeapYear
+package exercises.to20
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

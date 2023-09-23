@@ -1,6 +1,7 @@
-package exercises
+package exercises.to20
 
 import kotlin.math.pow
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=9
 
@@ -22,6 +23,7 @@ fun main() {
         }
     }
     println(answers.reduce { acc, i -> acc * i })
+    exitProcess(0)
 }
 
 fun powDouble(a: Int): Int = a.toDouble().pow(2).toInt()

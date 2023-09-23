@@ -1,6 +1,5 @@
-import exercises.countNumber
-import exercises.handleThreeDigitNumbers
-import exercises.handleTwoDigitNumbers
+package exercises.to20
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

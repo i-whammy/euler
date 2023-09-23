@@ -1,4 +1,6 @@
-package exercises
+package exercises.to20
+
+import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=19
 
@@ -6,6 +8,7 @@ private val daysOfMonths = arrayOf(31,28,31,30,31,30,31,31,30,31,30,31)
 
 fun main() {
     println(countFirstDateSunday())
+    exitProcess(0)
 }
 
 fun countFirstDateSunday(): Int {
