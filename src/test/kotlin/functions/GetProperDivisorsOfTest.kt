@@ -1,6 +1,5 @@
-package exercises
+package functions
 
-import functions.getProperDivisorsOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
