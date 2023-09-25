@@ -12,7 +12,8 @@ fun fibonacciIndex(digits: Int): Int {
     var continues = true
     while (continues) {
         i++
-        if (fibonacci(i).toString().length >= digits) continues = false
+//        if (fibonacci(i).toString().length >= digits) continues = false
+        if (recursiveFibonacci(i).toString().length >= digits) continues = false
     }
     return i
 }
@@ -37,5 +38,12 @@ fun fibonacci(index: Int): BigInteger {
             f1 = result
         }
         result
+    }
+}
+
+fun recursiveFibonacci(index: Int, a: BigInteger = BigInteger.ONE, b: BigInteger = BigInteger.ONE): BigInteger {
+    return when (index) {
+        1,2 -> a
+        else -> recursiveFibonacci(index - 1, a + b, a)
     }
 }
