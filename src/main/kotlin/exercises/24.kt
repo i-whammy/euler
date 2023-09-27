@@ -1,5 +1,7 @@
 package exercises
 
+// https://projecteuler.net/problem=24
+
 import functions.factory
 
 private const val digits = "0123456789"

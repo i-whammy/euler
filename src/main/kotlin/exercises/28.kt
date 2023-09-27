@@ -1,5 +1,7 @@
 package exercises
 
+// https://projecteuler.net/problem=28
+
 import java.math.BigInteger
 import kotlin.math.pow
 

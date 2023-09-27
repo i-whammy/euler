@@ -1,5 +1,7 @@
 package exercises
 
+// https://projecteuler.net/problem=25
+
 import java.math.BigInteger
 
 fun main() {

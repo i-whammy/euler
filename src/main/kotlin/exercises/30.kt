@@ -1,5 +1,7 @@
 package exercises
 
+//https://projecteuler.net/problem=30
+
 import kotlin.math.pow
 
 fun main() {
