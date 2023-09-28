@@ -4,7 +4,16 @@ import java.math.BigInteger
 
 fun factory(below: Int): BigInteger {
     return when (below) {
+        0 -> BigInteger.ZERO
         1 -> BigInteger.ONE
-        else -> BigInteger.valueOf(below.toLong()) * factory(below - 1)
+        else -> below.toBigInteger() * factory(below - 1)
+    }
+}
+
+fun optimizedFactory(below: Int, answer: BigInteger = BigInteger.ONE): BigInteger {
+    return when (below) {
+        0 -> BigInteger.ZERO
+        1 -> answer
+        else -> optimizedFactory(below-1, answer * below.toBigInteger())
     }
 }
