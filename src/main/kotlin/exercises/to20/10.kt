@@ -13,5 +13,5 @@ fun main() {
 }
 
 fun sumOfPrimesBelow(number: Long): BigDecimal {
-    return (1..number).filter { isPrime(it) }.reduce { acc, i -> acc + i }.toBigDecimal()
+    return (1..number).filter { isPrime(it.toBigInteger()) }.reduce { acc, i -> acc + i }.toBigDecimal()
 }

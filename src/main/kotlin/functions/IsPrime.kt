@@ -1,16 +1,17 @@
 package functions
 
+import java.math.BigInteger
 import kotlin.math.sqrt
 
-fun isPrime(target: Long): Boolean {
-    if (target == 2L) return true
-    if (target == 1L) return false
+fun isPrime(target: BigInteger): Boolean {
+    if (target == BigInteger.TWO) return true
+    if (target == BigInteger.ONE) return false
     else {
-        var dividend = 2L
-        val limit = sqrt(target.toDouble()).toLong()
+        var dividend = BigInteger.TWO
+        val limit = sqrt(target.toDouble()).toLong().toBigInteger()
         while (dividend <= limit) {
-            if (target % dividend == 0L) return false
-            dividend += 1
+            if (target % dividend == BigInteger.ZERO) return false
+            dividend += BigInteger.ONE
         }
     }
     return true

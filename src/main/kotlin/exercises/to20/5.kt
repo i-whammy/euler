@@ -13,7 +13,7 @@ fun main() {
 
 fun smallestMultipleUntil(number: Int): BigDecimal {
     val primes = mutableListOf<Int>()
-    (1..number).filter { isPrime(it.toLong()) }.forEach { primes.add(it) }
+    (1..number).filter { isPrime(it.toBigInteger()) }.forEach { primes.add(it) }
     return primes.map { getMaxMultipleUntil(it, number) }.reduce { acc, i -> acc * i }.toBigDecimal()
 }
 
