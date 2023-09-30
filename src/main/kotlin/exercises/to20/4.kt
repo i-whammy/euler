@@ -1,5 +1,6 @@
 package exercises.to20
 
+import functions.isPalindromic
 import kotlin.system.exitProcess
 
 // https://projecteuler.net/problem=4
@@ -9,13 +10,13 @@ fun main() {
     exitProcess(0)
 }
 
-fun largestPalindromeProduct(): Int {
-    var a = 100
-    var b = 100
-    var max = 0
+fun largestPalindromeProduct(): Long {
+    var a = 100L
+    var b = 100L
+    var max = 0L
     while (a < 1000) {
         while (b < 1000) {
-            if (isPalindrome(a * b) && max < a * b) {
+            if (isPalindromic(a * b) && max < a * b) {
                 max = a * b
             }
             b += 1
@@ -24,14 +25,4 @@ fun largestPalindromeProduct(): Int {
         b = 100
     }
     return max
-}
-
-fun isPalindrome(number: Int): Boolean {
-    val numberCharArray = number.toString().toCharArray()
-    return if (numberCharArray.size % 2 == 0) {
-        println(number)
-        numberCharArray[0] == numberCharArray[5] && numberCharArray[1] == numberCharArray[4] && numberCharArray[2] == numberCharArray[3]
-    } else {
-        numberCharArray[0] == numberCharArray[4] && numberCharArray[1] == numberCharArray[3]
-    }
 }
