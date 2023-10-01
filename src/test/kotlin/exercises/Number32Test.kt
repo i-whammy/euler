@@ -11,11 +11,4 @@ class Number32Test {
         assertTrue { isPandigitalProduct(39,186) }
         assertFalse { isPandigitalProduct(15, 234) }
     }
-
-    @Test
-    fun testIsDigitalUniquePandigital() {
-        assertTrue { isDigitalUniquePandigital(23) }
-        assertFalse { isDigitalUniquePandigital(10) }
-        assertFalse { isDigitalUniquePandigital(11) }
-    }
 }

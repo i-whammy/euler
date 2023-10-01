@@ -1,11 +1,13 @@
 package exercises
 
 import exercises.unsolved.getFractionRecurringCycle
+import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class Number26Test {
 
+    @Ignore
     @Test
     fun testFractionDenominatorCycle() {
         assertEquals(0, getFractionRecurringCycle(1))

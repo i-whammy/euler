@@ -1,5 +1,6 @@
 package exercises
 
+import functions.isPandigital
 import java.math.BigInteger
 
 // https://projecteuler.net/problem=32
@@ -10,7 +11,7 @@ fun main() {
 }
 
 fun getPandigitalProducts(): Set<BigInteger> {
-    val targets = (1..9999).filter { isDigitalUniquePandigital(it) }
+    val targets = (1..9999L).filter { isPandigital(it) }
     return targets
         .map { a ->
             targets
@@ -20,16 +21,8 @@ fun getPandigitalProducts(): Set<BigInteger> {
         .toSet()
 }
 
-fun isPandigitalProduct(a: Int, b: Int): Boolean {
+fun isPandigitalProduct(a: Long, b: Long): Boolean {
     val product = a.toBigInteger() * b.toBigInteger()
     val all = a.toString() + b.toString() + product.toString()
-    val set = all.toSet()
-    return all.length == set.size
-            && set.size == 9
-            && set.none { it == '0' }
-}
-
-fun isDigitalUniquePandigital(a: Int): Boolean {
-    val set = a.toString().toSet()
-    return set.size == a.toString().length && !set.contains('0')
+    return isPandigital(all.toLong()) && all.length == 9
 }
