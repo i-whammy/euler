@@ -1,4 +1,4 @@
-package exercises
+package exercises.to40
 
 import functions.isPandigital
 import java.math.BigInteger

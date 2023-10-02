@@ -1,4 +1,4 @@
-package exercises
+package exercises.to40
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

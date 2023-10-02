@@ -1,7 +1,5 @@
-package exercises
+package exercises.to40
 
-import exercises.calculateScore
-import exercises.sumUpNamesScore
 import java.math.BigInteger
 import kotlin.test.Test
 import kotlin.test.assertEquals

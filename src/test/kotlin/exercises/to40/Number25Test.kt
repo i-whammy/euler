@@ -1,4 +1,4 @@
-package exercises
+package exercises.to40
 
 import java.math.BigInteger
 import kotlin.test.Test

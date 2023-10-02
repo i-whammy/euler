@@ -1,4 +1,6 @@
-package exercises
+package exercises.to40
+
+// https://projecteuler.net/problem=37
 
 import functions.isPrime
 
