@@ -11,7 +11,7 @@ fun main() {
 }
 
 fun getPandigitalProducts(): Set<BigInteger> {
-    val targets = (1..9999L).filter { isPandigital(it) }
+    val targets = (1..9999L).filter { hasNoDuplicatedDigit(it) }
     return targets
         .map { a ->
             targets
@@ -19,6 +19,10 @@ fun getPandigitalProducts(): Set<BigInteger> {
                 .map { a.toBigInteger() * it.toBigInteger() }
         }.flatten()
         .toSet()
+}
+
+fun hasNoDuplicatedDigit(n: Long): Boolean {
+    return n.toString().length == n.toString().toSet().size
 }
 
 fun isPandigitalProduct(a: Long, b: Long): Boolean {

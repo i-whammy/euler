@@ -8,12 +8,14 @@ class IsPandigitalTest {
 
     @Test
     fun testIsPandigital() {
-        assertTrue { isPandigital(23L, false) }
+        assertTrue { isPandigital(12L, false) }
+        assertFalse { isPandigital(23L, false) }
+        assertTrue { isPandigital(213L, false) }
         assertFalse { isPandigital(11L, false) }
 
-        assertTrue { isPandigital(10L, true) }
-        assertFalse { isPandigital(10L, false) }
-        assertTrue { isPandigital(23L, true) }
-        assertFalse { isPandigital(11L, true) }
+        assertTrue { isPandigital(120L, true) }
+        assertFalse { isPandigital(120L, false) }
+        assertFalse { isPandigital(123L, true) }
+        assertFalse { isPandigital(112L, true) }
     }
 }
