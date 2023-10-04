@@ -12,6 +12,7 @@ class IsPrimeTest {
         assertEquals(false, isPrime(BigInteger.valueOf(14)))
         assertEquals(false, isPrime(BigInteger.valueOf(4)))
         assertEquals(false, isPrime(BigInteger.valueOf(1)))
+        assertEquals(false, isPrime(BigInteger.valueOf(1)))
     }
 
 }
