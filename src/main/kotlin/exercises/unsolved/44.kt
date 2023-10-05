@@ -1,6 +1,6 @@
-package exercises
+package exercises.unsolved
 
-import kotlin.math.pow
+import functions.pentagonals
 
 // pentagonal = (n.pow(2) * 3 - n) / 2
 // Pj + Pk = pentagonal
@@ -17,21 +17,17 @@ fun main() {
     kotlin.system.exitProcess(0)
 }
 
-fun pentagonals(size: Int): List<Int> {
-    return (1..size).map { (it.toDouble().pow(2) * 3 - it).toInt() / 2 }
-}
-
 fun permutations(n: Int): List<Pair<Int, Int>> {
     return (1..n).map { a ->
         (a + 1..n).map { b -> a to b }
     }.flatten()
 }
 
-fun isPentagonal(n: Int): Boolean {
+fun isPentagonal(n: Long): Boolean {
     when (n) {
-        1 -> return true
+        1L -> return true
         else -> {
-            var sum = 1
+            var sum = 1L
             var i = 1
             while (sum < n) {
                 sum += 3 * i + 1
