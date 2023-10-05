@@ -1,11 +1,11 @@
 package exercises
 
-import functions.permutations
+import functions.getDigitPermutations
 
 private val primes = listOf(2,3,5,7,11,13,17)
 
 fun main() {
-    val pandigitals = permutations(1234567890).filter { it / 1_000_000_000 >= 1 }
+    val pandigitals = getDigitPermutations(1234567890).filter { it / 1_000_000_000 >= 1 }
     println(pandigitals.filter { isSubstringDivisible(it) }.sum())
     kotlin.system.exitProcess(0)
 }

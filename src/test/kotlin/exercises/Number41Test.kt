@@ -9,6 +9,6 @@ class Number41Test {
     @Ignore
     @Test
     fun testGetAllPandigitals() {
-        assertEquals(listOf(12,21), getAllPandigitals(2))
+        assertEquals(listOf(12L,21L), getAllPandigitals(2))
     }
 }

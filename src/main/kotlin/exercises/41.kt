@@ -1,7 +1,7 @@
 package exercises
 
 import functions.isPrime
-import functions.permutations
+import functions.getDigitPermutations
 
 fun main() {
     val start = System.currentTimeMillis()
@@ -12,5 +12,5 @@ fun main() {
 }
 
 fun getAllPandigitals(digit: Long): List<Long> {
-    return permutations(digit)
+    return getDigitPermutations(digit)
 }
