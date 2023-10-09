@@ -1,4 +1,4 @@
-package exercises.unsolved
+package exercises.to40
 
 private val factorials = arrayOf(
     1,

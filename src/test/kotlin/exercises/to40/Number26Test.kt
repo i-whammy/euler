@@ -1,6 +1,5 @@
 package exercises.to40
 
-import exercises.unsolved.getFractionRecurringCycle
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
