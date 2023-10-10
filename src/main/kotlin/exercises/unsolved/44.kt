@@ -1,5 +1,6 @@
 package exercises.unsolved
 
+import functions.pentagonal
 import functions.pentagonals
 
 // pentagonal = (n.pow(2) * 3 - n) / 2
@@ -7,20 +8,22 @@ import functions.pentagonals
 // Pj - Pk = pentagonal
 // j != k (as Pj - Pj = 0, 0 is not pentagonal)
 fun main() {
-    val pentagonals = pentagonals(1)
-    val pentagonalPairs = permutations(1)
-        .filter { p ->
-            isPentagonal(pentagonals[p.first - 1] + pentagonals[p.second - 1]) &&
+    val pentagonals = pentagonals(3000)
+    val doublePentagonal = permutations(3000)
+        .first { p ->
+            isPentagonal(pentagonals[p.first - 1] + pentagonals[p.second - 1])
+                    &&
                     isPentagonal(pentagonals[p.second - 1] - pentagonals[p.first - 1])
         }
-    println(pentagonalPairs)
+    println(pentagonal(doublePentagonal.second) - pentagonal(doublePentagonal.first))
+    println(doublePentagonal)
     kotlin.system.exitProcess(0)
 }
 
 fun permutations(n: Int): List<Pair<Int, Int>> {
-    return (1..n).map { a ->
+    return (1..n).flatMap { a ->
         (a + 1..n).map { b -> a to b }
-    }.flatten()
+    }
 }
 
 fun isPentagonal(n: Long): Boolean {
