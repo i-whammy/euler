@@ -1,6 +1,5 @@
 package exercises
 
-import exercises.unsolved.isPentagonal
 import kotlin.math.pow
 
 fun main() {

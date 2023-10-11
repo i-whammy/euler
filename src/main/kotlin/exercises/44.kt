@@ -1,4 +1,4 @@
-package exercises.unsolved
+package exercises
 
 import functions.pentagonal
 import functions.pentagonals
