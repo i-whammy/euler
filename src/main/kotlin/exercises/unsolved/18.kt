@@ -1,6 +1,6 @@
 package exercises.unsolved
 
-import java.lang.RuntimeException
+import kotlin.math.max
 
 private const val triangle =
         "75\n" +
@@ -25,19 +25,18 @@ private const val easyTriangle =
         "2 4 6\n" +
         "8 5 9 3"
 
-private val easyTriangleList = easyTriangle.split("\n").map { it.split(" ").map { s -> s.toInt() } }
+private fun String.toIntegerTriangleList(): List<List<Int>> = this
+    .split("\n")
+    .map { it.split(" ").map { s -> s.toInt() } }
 
 fun main() {
-    println(getAllRoutesFrom(0,0))
-    println(getAllRoutesFrom(1,0))
-    println(getAllRoutesFrom(1,1))
-}
-
-fun getAllRoutesFrom(rowIndex: Int, index: Int): List<List<Int>> {
-    if (rowIndex < index) throw RuntimeException("Index exceeds row number. index: $index, row: $rowIndex")
-    return when (rowIndex) {
-        0 -> listOf(easyTriangleList[0])
-        1 -> listOf(listOf(easyTriangleList[1][index], easyTriangleList[0][0]))
-        else -> emptyList()
+//    val triangleList = easyTriangle.toIntegerTriangleList()
+    val triangleList = triangle.toIntegerTriangleList()
+    val maximumList = triangleList.map { it.toMutableList() }.toMutableList()
+    (triangleList.size-2 downTo 0).forEach { i ->
+        (triangleList[i].size-1 downTo 0).forEachIndexed { j, _ ->
+            maximumList[i][j] += max(maximumList[i+1][j], maximumList[i+1][j+1])
+        }
     }
+    println(maximumList[0][0])
 }
