@@ -1,4 +1,4 @@
-package exercises.unsolved
+package exercises.to20
 
 import kotlin.math.max
 
