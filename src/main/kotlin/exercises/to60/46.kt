@@ -1,4 +1,4 @@
-package exercises
+package exercises.to60
 
 import functions.isPrime
 import kotlin.math.pow

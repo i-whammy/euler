@@ -1,4 +1,4 @@
-package exercises
+package exercises.to60
 
 fun main() {
     println(findExactSameDigits(100000L, 6))

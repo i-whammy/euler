@@ -1,5 +1,6 @@
 package exercises
 
+import exercises.to60.isPentagonal
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

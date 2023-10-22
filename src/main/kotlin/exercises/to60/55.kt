@@ -1,4 +1,4 @@
-package exercises
+package exercises.to60
 
 import functions.isPalindromic
 import java.math.BigInteger

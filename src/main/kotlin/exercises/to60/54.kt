@@ -1,14 +1,22 @@
-package exercises
+package exercises.to60
 
 import java.io.File
 
 fun main() {
     val cardPairs = readCards()
     val results = cardPairs.map { it.first.toHand() to (it.second.toHand()) }
-    results.forEachIndexed { index, pair ->  println("${index+1} $pair ${if (pair.first.compare(pair.second) == 0) "draw" else if (pair.first.compare(pair.second) > 0) "win" else "lose"}") }
+    results.forEachIndexed { index, pair ->
+        println(
+            "${index + 1} $pair ${
+                if (pair.first.compare(pair.second) == 0) "draw" else if (pair.first.compare(
+                        pair.second
+                    ) > 0
+                ) "win" else "lose"
+            }"
+        )
+    }
 
     results.map { it.first.compare(it.second) }.count { it > 0 }.let { println(it) }
-//    println(results)
     kotlin.system.exitProcess(0)
 }
 
@@ -48,12 +56,18 @@ private data class CardsSorted(val cards: List<Card>) {
         if (this.isThreeCards()) return ThreeCards(this)
         if (this.isTwoPairs()) return TwoPairs(this)
         if (this.isOnePair()) return OnePair(this)
-        return HighCard(this) }
+        return HighCard(this)
+    }
 
 }
-private fun CardsSorted.isRoyalFlush(): Boolean = this.isStraightFlush() && this.cards.minBy { it.cardValue.strength }.cardValue == CardValue.TEN
+
+private fun CardsSorted.isRoyalFlush(): Boolean =
+    this.isStraightFlush() && this.cards.minBy { it.cardValue.strength }.cardValue == CardValue.TEN
+
 private fun CardsSorted.isStraightFlush(): Boolean = this.isStraight() && this.isFlush()
-private fun CardsSorted.isFourCards(): Boolean = this.cards.groupBy { it.cardValue }.filter { it.value.size == 4 }.map { it.key }.size == 1
+private fun CardsSorted.isFourCards(): Boolean =
+    this.cards.groupBy { it.cardValue }.filter { it.value.size == 4 }.map { it.key }.size == 1
+
 private fun CardsSorted.isFullHouse(): Boolean = this.isThreeCards() && this.isOnePair()
 private fun CardsSorted.isFlush(): Boolean = this.cards.groupBy { it.suit }.size == 1
 private fun CardsSorted.isStraight(): Boolean {
@@ -63,9 +77,15 @@ private fun CardsSorted.isStraight(): Boolean {
     }
     return true
 }
-private fun CardsSorted.isThreeCards(): Boolean = this.cards.groupBy { it.cardValue }.filter { it.value.size == 3 }.map { it.key }.size == 1
-private fun CardsSorted.isTwoPairs(): Boolean = this.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }.size == 2
-private fun CardsSorted.isOnePair(): Boolean = this.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }.size == 1
+
+private fun CardsSorted.isThreeCards(): Boolean =
+    this.cards.groupBy { it.cardValue }.filter { it.value.size == 3 }.map { it.key }.size == 1
+
+private fun CardsSorted.isTwoPairs(): Boolean =
+    this.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }.size == 2
+
+private fun CardsSorted.isOnePair(): Boolean =
+    this.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }.size == 1
 
 private data class Card(val cardValue: CardValue, val suit: Suit)
 
@@ -145,6 +165,7 @@ private class OnePair(private val cards: CardsSorted) : Hand {
             return 0
         } else this.strength() - hand.strength()
     }
+
     fun pair(): CardValue = cards.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }.first()
 }
 
@@ -172,7 +193,8 @@ private class TwoPairs(private val cards: CardsSorted) : Hand {
 
     fun pairs(): List<CardValue> = cards.cards.groupBy { it.cardValue }.filter { it.value.size == 2 }.map { it.key }
 }
-private class ThreeCards(private val cards: CardsSorted): Hand {
+
+private class ThreeCards(private val cards: CardsSorted) : Hand {
     override fun strength() = 3
     override fun restOfHand(): List<CardValue> {
         return cards.cards.groupBy { it.cardValue }.filter { it.value.size == 1 }.map { it.key }
@@ -192,7 +214,8 @@ private class ThreeCards(private val cards: CardsSorted): Hand {
 
     fun value(): CardValue = cards.cards.groupBy { it.cardValue }.filter { it.value.size == 3 }.map { it.key }.first()
 }
-private class Straight(private val cards: CardsSorted): Hand {
+
+private class Straight(private val cards: CardsSorted) : Hand {
     override fun strength() = 4
     override fun restOfHand(): List<CardValue> = emptyList()
 
@@ -204,7 +227,8 @@ private class Straight(private val cards: CardsSorted): Hand {
 
     fun beginning(): CardValue = cards.cards.minBy { it.cardValue.strength }.cardValue
 }
-private class Flush(private val cards: CardsSorted): Hand {
+
+private class Flush(private val cards: CardsSorted) : Hand {
     override fun strength() = 5
     override fun restOfHand(): List<CardValue> {
         return cards.cards.sortedByDescending { it.cardValue.strength }.map { it.cardValue }
@@ -221,7 +245,8 @@ private class Flush(private val cards: CardsSorted): Hand {
         } else this.strength() - hand.strength()
     }
 }
-private class FullHouse(private val cards: CardsSorted): Hand {
+
+private class FullHouse(private val cards: CardsSorted) : Hand {
     override fun strength() = 6
     override fun restOfHand(): List<CardValue> = emptyList()
     override fun compare(hand: Hand): Int {
@@ -230,13 +255,16 @@ private class FullHouse(private val cards: CardsSorted): Hand {
         }
         return this.strength() - hand.strength()
     }
+
     fun threeCards() = ThreeCards(cards).value()
 }
-private class FourCards(private val cards: CardsSorted): Hand {
+
+private class FourCards(private val cards: CardsSorted) : Hand {
     override fun strength() = 7
     override fun restOfHand(): List<CardValue> {
         return cards.cards.groupBy { it.cardValue }.filter { it.value.size == 1 }.map { it.key }
     }
+
     override fun compare(hand: Hand): Int {
         if (hand is FourCards) {
             return if (this.fourCards().strength != hand.fourCards().strength) this.fourCards().strength - hand.fourCards().strength
@@ -244,9 +272,12 @@ private class FourCards(private val cards: CardsSorted): Hand {
         }
         return this.strength() - hand.strength()
     }
-    fun fourCards(): CardValue = cards.cards.groupBy { it.cardValue }.filter { it.value.size == 4 }.map { it.key }.first()
+
+    fun fourCards(): CardValue =
+        cards.cards.groupBy { it.cardValue }.filter { it.value.size == 4 }.map { it.key }.first()
 }
-private class StraightFlush(private val cards: CardsSorted): Hand {
+
+private class StraightFlush(private val cards: CardsSorted) : Hand {
     override fun strength() = 8
     override fun restOfHand(): List<CardValue> = emptyList()
     override fun compare(hand: Hand): Int {
@@ -254,11 +285,13 @@ private class StraightFlush(private val cards: CardsSorted): Hand {
             straight().compare(hand.straight())
         } else this.strength() - hand.strength()
     }
+
     fun straight() = Straight(this.cards)
 }
-private class RoyalFlush(private val cards: CardsSorted): Hand {
+
+private class RoyalFlush(private val cards: CardsSorted) : Hand {
     override fun strength() = 9
-    override fun restOfHand():List<CardValue> = emptyList()
+    override fun restOfHand(): List<CardValue> = emptyList()
 
     override fun compare(hand: Hand): Int = 1
 }
