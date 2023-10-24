@@ -3,50 +3,41 @@ package exercises.to60
 import functions.isPrime
 
 private const val upperLimit = 1_000_000L
-private val primes = (2..upperLimit).filter { isPrime(it.toBigInteger()) }
+private val primes = (3..upperLimit).filter { isPrime(it.toBigInteger()) } // 2 is prime but it will create even numbers so omit it.
 private val suitablePrimes = primes.filter { it.isSetOfTwoPrimes() }
 
 fun main() {
-    val min = (0..primes.size - 5).map { findSum(mutableListOf(primes[it])) }.filter { it != -1L }.min()
+    val min = primes.map { findSum(mutableListOf(it)) }.filter { it != -1L }.min()
     println(min)
     kotlin.system.exitProcess(0)
 }
 
-fun findSum(p: MutableList<Long>, targetLength: Int = 3): Long {
-    return when (p.size) {
+fun findSum(resultPrimes: MutableList<Long>, targetLength: Int = 3): Long {
+    when (resultPrimes.size) {
         targetLength + 1 -> {
-            p.sum()
+            println(resultPrimes)
+            return resultPrimes.sum()
         }
 
         else -> {
-            var count = 1
-            label@ while (primes.indexOf(p.last()) + count < primes.size) {
-                val candidate = mutableListOf<Long>()
-                candidate.addAll(p)
-                val next = primes[primes.indexOf(p.last()) + count]
-                candidate.add(next)
-                val indices = getPermutedIndices(p.size)
-                if (indices.any { (a, b) ->
-                        val canA = candidate[a].toInt()
-                        val canB = candidate[b].toInt()
-                        !suitablePrimes.contains("$canA$canB".toLong())
-                                || !suitablePrimes.contains("$canB$canA".toLong())
-                    }) {
-                    count++
-                    continue@label
-                } else {
-                    if (findSum(candidate) != -1L) {
-                        println(candidate)
-                        return findSum(candidate)
-                    } else {
-                        count++
-                        continue@label
-                    }
+            (1..<primes.indexOf(resultPrimes.last())).map { count ->
+                val candidates = mutableListOf<Long>().also { it.addAll(resultPrimes) }
+                candidates.add(primes[primes.indexOf(resultPrimes.last()) + count])
+                candidates
+            }.filterNot { candidate ->
+                val indices = getPermutedIndices(candidate.size)
+                indices.any { (a, b) ->
+                    val canA = candidate[a].toInt()
+                    val canB = candidate[b].toInt()
+                    !suitablePrimes.contains("$canA$canB".toLong())
+                            || !suitablePrimes.contains("$canB$canA".toLong())
                 }
+            }.forEach {
+                findSum(it)
             }
-            return -1
         }
     }
+    return -1
 }
 
 // nP2 = n * (n-1)
