@@ -1,24 +1,10 @@
 package exercises
 
-import functions.isPrime
-import kotlin.math.sqrt
-
 private const val limit = 1_000_000
-private val primes = (1..limit).filter { isPrime(it.toBigInteger()) }
 
 fun main() {
-    var max = MaxNAndFraction(0, 0.0)
-    (2..limit).forEach { number ->
-        if (primes.contains(number)) {
-//            max = max.confirm(number, number - 1) // perhaps this is not necessary as primes cannot be the answer
-            return@forEach
-        }
-        val sqrt = sqrt(number.toDouble()).toInt()
-        val targets = if (number % 2 == 0) (1..sqrt).filter { it % 2 == 1 } else (1..sqrt)
-        val count = targets.count { areRelativePrime(it, number) }
-        max = max.confirm(number, count)
-    }
-    println(max)
+    val answer = totientsList(limit).foldIndexed(MaxNAndFraction(0, 0.0)) { index, acc, n -> acc.confirm(index, n) }
+    println(answer)
     kotlin.system.exitProcess(0)
 }
 
@@ -40,9 +26,28 @@ fun getGCM(a: Int, b: Int): Int {
 
 data class MaxNAndFraction(val n: Int, val fraction: Double) {
     fun confirm(n: Int, count: Int): MaxNAndFraction {
-        val fraction = n.toDouble() / count
-        return if (fraction > this.fraction) {
-            MaxNAndFraction(n, fraction)
-        } else this
+        return try {
+            val fraction = n.toDouble() / count
+            if (fraction > this.fraction) {
+                MaxNAndFraction(n, fraction)
+            } else this
+        } catch (e: ArithmeticException) {
+            this
+        }
     }
+}
+
+fun totientsList(n: Int): List<Int> {
+    val list = mutableListOf<Int>()
+    repeat(n+1) { list.add(it) }
+    for (i in 2..<list.size) {
+        if (list[i] == i) {
+            var tmp = i
+            while (tmp <= n) {
+                list[tmp] -= list[tmp] / i
+                tmp += i
+            }
+        }
+    }
+    return list
 }
