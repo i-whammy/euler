@@ -1,7 +1,5 @@
 package exercises
 
-import kotlin.math.sqrt
-
 private const val UPPER_LIMIT_NUMERATOR = 1_000_000
 private const val UPPER_LIMIT_FRACTION = 3 / 7.0
 
@@ -21,17 +19,4 @@ fun main() {
     }
     println(maxNumerator)
     kotlin.system.exitProcess(0)
-}
-
-fun getRelativePrimes(n: Int): List<Int> {
-    val result = (1..n).toMutableList()
-    val sqrt = sqrt(n.toDouble()).toInt()
-    (2..sqrt).forEach { i ->
-        var count = i
-        while (i < n) {
-            result.remove(count)
-            count += i
-        }
-    }
-    return result
 }
