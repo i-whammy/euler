@@ -1,5 +1,7 @@
 package exercises
 
+import functions.totientsList
+
 fun main() {
     val limit = 9_999_999
     val totients = totientsList(limit)
