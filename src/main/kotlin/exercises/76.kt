@@ -19,24 +19,23 @@ package exercises
 
 
 fun main() {
-    println(fillOutSums(5).takeLast(2).first().sum())
+    println(fillOutSums(100)[100][1]-1)
     kotlin.system.exitProcess(0)
 }
 
-fun fillOutSums(n: Int): List<List<Int>> {
-    val list = mutableListOf<List<Int>>()
+fun fillOutSums(n: Int): Array<Array<Int>> {
+    val list = arrayOfNulls<Array<Int>>(n+1)
     (0..n).forEach { a ->
-        val ways = mutableListOf<Int>()
+        val ways = arrayOfNulls<Int>(n+1)
         (n downTo 0).forEach { b ->
             println("a = $a b = $b")
             if (b == a) {
-                ways.add(1)
-            } else if (b > a) ways.add(0)
-            else if (b == 0) ways.add(ways.last())
-            else ways.add(ways.last() + list[a - b][b])
+                ways[b] = 1
+            } else if (b > a) ways[b] = 0
+            else if (b == 0) ways[b] = ways[1]
+            else ways[b] = ways[b+1]!!.plus(list[a-b]!![b])
         }
-        list.add(ways)
+        list[a] = ways.map { it!! }.toTypedArray()
     }
-    println(list)
-    return list
+    return list.map { it!! }.toTypedArray()
 }
