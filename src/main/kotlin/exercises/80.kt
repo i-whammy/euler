@@ -3,9 +3,13 @@ package exercises
 import java.math.BigInteger
 import kotlin.math.sqrt
 
+private const val UPPER_LIMIT = 100
+private val nonSquareRoots = (1..UPPER_LIMIT).filterNot { n ->
+    (1..sqrt(UPPER_LIMIT.toDouble()).toInt()).map { it * it }.contains(n)
+}
+
 fun main() {
-    val sum = (1..100).filterNot { listOf(1, 4, 9, 16, 25, 36, 49, 64, 81, 100).contains(it) }
-        .fold(0) { acc, i -> acc + sumUpSqrtDigits(i) }
+    val sum = nonSquareRoots.fold(0) { acc, i -> acc + sumUpSqrtDigits(i) }
     println(sum)
     kotlin.system.exitProcess(0)
 }
