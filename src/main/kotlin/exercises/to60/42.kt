@@ -1,12 +1,13 @@
 package exercises.to60
 
-import java.io.File
+import functions.readFile
+import kotlin.io.path.Path
 import kotlin.math.sqrt
 
 private const val alphabets = "0ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 fun main() {
-    val wordValues = File("src/main/resources/0042_words.txt").inputStream().readBytes().toString(Charsets.UTF_8)
+    val wordValues = readFile(Path("src/main/resources/0042_words.txt"))
         .replace("\"", "").split(",").fold(hashMapOf<String, Int>()) { acc, s ->
             acc[s] = calculateWordValue(s)
             acc

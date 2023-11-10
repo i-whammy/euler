@@ -1,11 +1,12 @@
 package exercises.to60
 
-import java.io.File
+import functions.readFile
 import kotlin.experimental.xor
+import kotlin.io.path.Path
 
 fun main() {
     val bytes =
-        File("src/main/resources/0059_cipher.txt").readBytes().toString(Charsets.UTF_8).split(",").map { it.toByte() }
+        readFile(Path("src/main/resources/0059_cipher.txt")).split(",").map { it.toByte() }
             .toByteArray()
     val maxKey = lowerCaseRange.flatMap { x ->
         lowerCaseRange.flatMap { y ->

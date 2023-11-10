@@ -2,14 +2,15 @@ package exercises.to40
 
 // https://projecteuler.net/problem=22
 
-import java.io.File
+import functions.readFile
 import java.math.BigInteger
+import kotlin.io.path.Path
 import kotlin.system.exitProcess
 
 private const val alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 fun main() {
-    val names = File("src/main/resources/0022_names.txt").inputStream().readBytes().toString(Charsets.UTF_8)
+    val names = readFile(Path("src/main/resources/0022_names.txt"))
     println(sumUpNamesScore(names))
     exitProcess(0)
 }

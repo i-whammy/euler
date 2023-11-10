@@ -1,10 +1,11 @@
 package exercises
 
-import java.io.File
+import functions.readFile
+import kotlin.io.path.Path
 import kotlin.math.max
 
 fun main() {
-    val triangleList = File("src/main/resources/0067_triangle.txt").readBytes().toString(Charsets.UTF_8).toIntegerTriangleList()
+    val triangleList = readFile(Path("src/main/resources/0067_triangle.txt")).toIntegerTriangleList()
     val maximumList = triangleList.map { it.toMutableList() }.toMutableList()
     (triangleList.size-2 downTo 0).forEach { i ->
         (triangleList[i].size-1 downTo 0).forEachIndexed { j, _ ->
