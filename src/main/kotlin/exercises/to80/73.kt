@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 fun main() {
     val count = relativePrimeCount(12_000, 1 / 2.toDouble(), 1 / 3.toDouble())

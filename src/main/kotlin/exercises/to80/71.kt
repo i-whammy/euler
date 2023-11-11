@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 private const val UPPER_LIMIT_NUMERATOR = 1_000_000
 private const val UPPER_LIMIT_FRACTION = 3 / 7.0

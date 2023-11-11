@@ -8,38 +8,11 @@ private const val MATRIX_COLUMN_LENGTH = 80
 private const val MATRIX_ROW_LENGTH = 80
 
 private val testMatrix = listOf(
-    listOf(
-        BigInteger.valueOf(131), BigInteger.valueOf(673), BigInteger.valueOf(234), BigInteger.valueOf(103),
-        BigInteger.valueOf(18)
-    ),
-    listOf(
-        BigInteger.valueOf(201),
-        BigInteger.valueOf(96),
-        BigInteger.valueOf(342),
-        BigInteger.valueOf(965),
-        BigInteger.valueOf(150)
-    ),
-    listOf(
-        BigInteger.valueOf(630),
-        BigInteger.valueOf(803),
-        BigInteger.valueOf(746),
-        BigInteger.valueOf(422),
-        BigInteger.valueOf(111)
-    ),
-    listOf(
-        BigInteger.valueOf(537),
-        BigInteger.valueOf(699),
-        BigInteger.valueOf(497),
-        BigInteger.valueOf(121),
-        BigInteger.valueOf(956)
-    ),
-    listOf(
-        BigInteger.valueOf(805),
-        BigInteger.valueOf(732),
-        BigInteger.valueOf(524),
-        BigInteger.valueOf(37),
-        BigInteger.valueOf(331)
-    )
+    listOf(BigInteger.valueOf(131), BigInteger.valueOf(673), BigInteger.valueOf(234), BigInteger.valueOf(103), BigInteger.valueOf(18)),
+    listOf(BigInteger.valueOf(201), BigInteger.valueOf(96), BigInteger.valueOf(342), BigInteger.valueOf(965), BigInteger.valueOf(150)),
+    listOf(BigInteger.valueOf(630), BigInteger.valueOf(803), BigInteger.valueOf(746), BigInteger.valueOf(422), BigInteger.valueOf(111)),
+    listOf(BigInteger.valueOf(537), BigInteger.valueOf(699), BigInteger.valueOf(497), BigInteger.valueOf(121), BigInteger.valueOf(956)),
+    listOf(BigInteger.valueOf(805), BigInteger.valueOf(732), BigInteger.valueOf(524), BigInteger.valueOf(37), BigInteger.valueOf(331))
 )
 
 fun main() {

@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 // 1+1
 // [2+1] 1+1+1

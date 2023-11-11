@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 import functions.readFile
 import kotlin.io.path.Path

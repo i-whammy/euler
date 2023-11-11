@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 import java.math.BigInteger
 import kotlin.math.sqrt

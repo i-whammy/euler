@@ -1,4 +1,4 @@
-package exercises
+package exercises.to80
 
 private val triangles = (1..140).map { it * (it + 1) / 2 }.filter { it in 1000..9999 }
 private val squares = (1..140).map { it * it }.filter { it in 1000..9999 }
