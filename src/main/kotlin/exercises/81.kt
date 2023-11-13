@@ -1,18 +1,17 @@
 package exercises
 
 import functions.readFile
-import java.math.BigInteger
 import kotlin.io.path.Path
 
 private const val MATRIX_COLUMN_LENGTH = 80
 private const val MATRIX_ROW_LENGTH = 80
 
 private val testMatrix = listOf(
-    listOf(BigInteger.valueOf(131), BigInteger.valueOf(673), BigInteger.valueOf(234), BigInteger.valueOf(103), BigInteger.valueOf(18)),
-    listOf(BigInteger.valueOf(201), BigInteger.valueOf(96), BigInteger.valueOf(342), BigInteger.valueOf(965), BigInteger.valueOf(150)),
-    listOf(BigInteger.valueOf(630), BigInteger.valueOf(803), BigInteger.valueOf(746), BigInteger.valueOf(422), BigInteger.valueOf(111)),
-    listOf(BigInteger.valueOf(537), BigInteger.valueOf(699), BigInteger.valueOf(497), BigInteger.valueOf(121), BigInteger.valueOf(956)),
-    listOf(BigInteger.valueOf(805), BigInteger.valueOf(732), BigInteger.valueOf(524), BigInteger.valueOf(37), BigInteger.valueOf(331))
+    listOf(131, 673, 234, 103, 18),
+    listOf(201, 96, 342, 965, 150),
+    listOf(630, 803, 746, 422, 111),
+    listOf(537, 699, 497, 121, 956),
+    listOf(805, 732, 524, 37, 331)
 )
 
 fun main() {
@@ -21,7 +20,7 @@ fun main() {
         .filter { it.isNotEmpty() }
         .map {
             it.split(",")
-                .map { s -> s.toBigInteger() }
+                .map { s -> s.toInt() }
         }
     val sumUppedMatrix = generateEmptyArrays(MATRIX_ROW_LENGTH, MATRIX_COLUMN_LENGTH)
     val testSumUppedMatrix = generateEmptyArrays(5, 5)
@@ -31,11 +30,11 @@ fun main() {
 }
 
 private fun fillUpMatrix(
-    rawMatrix: List<List<BigInteger>>,
-    matrix: Array<Array<BigInteger?>>,
+    rawMatrix: List<List<Int>>,
+    matrix: Array<Array<Int?>>,
     matrixRowIndex: Int,
     matrixColumnIndex: Int
-): List<List<BigInteger>> {
+): List<List<Int>> {
     // fill up the top
     matrix[0][0] = rawMatrix.first().first()
     // fill up the left column and the top row
@@ -67,8 +66,8 @@ private fun fillUpMatrix(
     return matrix.map { row -> row.map { column -> column!! } }
 }
 
-private fun List<List<BigInteger>>.sumOfMinimalPath(): BigInteger = this.last().last()
+private fun List<List<Int>>.sumOfMinimalPath(): Int = this.last().last()
 
-private fun generateEmptyArrays(row: Int, column: Int) = arrayOfNulls<Array<BigInteger?>>(row)
-    .map { arrayOfNulls<BigInteger>(column) }
+private fun generateEmptyArrays(row: Int, column: Int) = arrayOfNulls<Array<Int?>>(row)
+    .map { arrayOfNulls<Int>(column) }
     .toTypedArray()
