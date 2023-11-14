@@ -6,54 +6,37 @@ import kotlin.math.min
 
 fun main() {
     println(sumUp(testMatrix, 5, 5))
-//    println(sumUp(matrix, MATRIX_ROW_LENGTH, MATRIX_COLUMN_LENGTH))
+    println(sumUp(matrix, MATRIX_ROW_LENGTH, MATRIX_COLUMN_LENGTH))
     kotlin.system.exitProcess(0)
 }
 
 private fun sumUp(matrix: List<List<Int>>, rowLength: Int, columnLength: Int): Int {
-    val sumUppedMatrix = matrix.map { it.toTypedArray() }.toTypedArray()
-//    // fill edge
-//    sumUppedMatrix[rowLength - 1][columnLength - 1] = matrix[rowLength - 1][columnLength - 1]
-//    (rowLength - 2 downTo 0).forEach { y ->
-//        sumUppedMatrix[y][4] = sumUppedMatrix[y + 1][4]!! + matrix[y][4]
-//    }
-//    (columnLength - 2 downTo 0).forEach { x ->
-//        sumUppedMatrix[4][x] = sumUppedMatrix[4][x + 1]!! + matrix[4][x]
-//    }
-    // confirm right and bottom
-    (0..<columnLength - 1).forEach { x ->
-        (0..<rowLength - 1).forEach { y ->
-            sumUppedMatrix[y][x] = min(
-                valueOf(x - 1, y, sumUppedMatrix.toList()),
-                valueOf(x, y - 1, sumUppedMatrix.toList()),
-            ) + sumUppedMatrix[y][x]
+    val sumUppedMatrix = generateEmptyArrays(rowLength, columnLength)
+    (0..<rowLength).forEach { y ->
+        (0..<columnLength).forEach { x ->
+            sumUppedMatrix[y][x] = OUTLIER
         }
     }
-    // fill edge
-    sumUppedMatrix[rowLength - 1][columnLength - 1] = matrix[rowLength - 1][columnLength - 1]
-    (rowLength - 2 downTo 0).forEach { y ->
-        sumUppedMatrix[y][4] = sumUppedMatrix[y + 1][4] + matrix[y][4]
-    }
-    (columnLength - 2 downTo 0).forEach { x ->
-        sumUppedMatrix[4][x] = sumUppedMatrix[4][x + 1] + matrix[4][x]
-    }
-
-    // left and top
-    (rowLength - 2 downTo 0).forEach { y ->
-        (columnLength - 2 downTo 0).forEach { x ->
-            sumUppedMatrix[y][x] =
-                min(valueOf(x, y + 1, sumUppedMatrix.toList()), valueOf(x+1, y, sumUppedMatrix.toList())) + sumUppedMatrix[y][x]
+    sumUppedMatrix[0][0] = matrix[0][0]
+    repeat(rowLength * columnLength) {
+        (0..<rowLength).forEach { y ->
+            (0..<columnLength).forEach { x ->
+                var tmp = OUTLIER
+                tmp = min(valueOf(x-1,y,sumUppedMatrix), tmp)
+                tmp = min(valueOf(x+1,y,sumUppedMatrix), tmp)
+                tmp = min(valueOf(x,y-1,sumUppedMatrix), tmp)
+                tmp = min(valueOf(x,y+1,sumUppedMatrix), tmp)
+                sumUppedMatrix[y][x] = min(matrix[y][x] + tmp, sumUppedMatrix[y][x]!!)
+            }
         }
     }
-
     sumUppedMatrix.forEach { println(it.toList()) }
 
-    return sumUppedMatrix.first().first()
+    return sumUppedMatrix.last().last()!!
 }
 
-private fun valueOf(x: Int, y: Int, matrix: List<List<Int?>>): Int {
-    return if (x < 0 || y < 0) 0
-    else if (y >= 5 || x >= 5 || matrix[y][x] == null || x >= matrix[y].filterNotNull().size) OUTLIER
+private fun valueOf(x: Int, y: Int, matrix: Array<Array<Int?>>): Int {
+    return if (y < 0 || y >= matrix.size || x < 0 || x >= matrix[y].size) OUTLIER
     else matrix[y][x]!!
 }
 
